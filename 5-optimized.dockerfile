@@ -2,10 +2,10 @@ FROM golang:1.21-alpine AS builder
 
 WORKDIR /app
 
-COPY go.mod go.sum ./
+COPY go-app/go.mod go-app/go.sum ./
 RUN go mod download
 
-COPY . .
+COPY go-app/ .
 
 RUN go build -ldflags="-s -w" -o server .
 
