@@ -7,15 +7,12 @@ RUN go mod download
 
 COPY go-app/ .
 
-RUN go build -ldflags="-s -w" -o server .
-
-FROM alpine:3.20
-
-RUN adduser -D user
-USER user
-
-COPY --from=builder /app/server .
+RUN go build -o server .
 
 EXPOSE 8080
+
+FROM scratch
+
+COPY --from=builder /app/server .
 
 CMD ["./server"]

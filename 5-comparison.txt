@@ -2,4 +2,4 @@ Taille de l'image à l'origine:
 bloated-go-app      820MB
 
 Taille de l'image après multi-stage build:
-optimized-go-app    19MB
+optimized-go-app    11,5MB

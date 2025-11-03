@@ -1,16 +1,15 @@
-FROM node:18-alpine
+FROM node:lts
 
 WORKDIR /app
 
-COPY package*.json ./
+COPY package.json /app
 
 RUN npm install
 
-COPY broken-app/ .
+COPY . /app
 
 EXPOSE 3000
 
-RUN adduser -D user
-USER user
+USER node
 
 CMD ["node", "server.js"]
